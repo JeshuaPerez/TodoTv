@@ -13,7 +13,8 @@
         "indices": "node scripts/indices.js",
         "semilla": "node scripts/semilla.js",
         "semilla:reset": "node scripts/semilla.js --reset",
-        "pruebas": "node scripts/pruebas/ejecutar.js"
+        "pruebas": "node scripts/pruebas/ejecutar.js",
+        "simulacion": "node scripts/simulacion-frontend.js"
     },
     "license": "MIT",
     "dependencies": {
