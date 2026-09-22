@@ -47,4 +47,15 @@ export class BaseDeDatosError extends AppError {
     static codigo = 'BASE_DE_DATOS';
 }
 
+export class ErrorInterno extends AppError {
+    static estado = 500;
+    static codigo = 'ERROR_INTERNO';
+
+    constructor(mensaje = 'Ocurrió un error inesperado', detalles = null) {
+        super(mensaje, detalles);
+        // no es un error previsto: se registra completo en el servidor
+        this.operacional = false;
+    }
+}
+
 export { AppError };
