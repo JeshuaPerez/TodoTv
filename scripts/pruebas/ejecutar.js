@@ -26,6 +26,7 @@ const { pruebasTransacciones } = await import('./suites/transacciones.js');
 const { pruebasFavoritos } = await import('./suites/favoritos.js');
 const { pruebasVersion } = await import('./suites/version.js');
 const { pruebasLimites } = await import('./suites/limites.js');
+const { pruebasFrontend, pruebasComponentes } = await import('./suites/frontend.js');
 
 const conexion = Conexion.instancia();
 const base = await conexion.conectar();
@@ -34,7 +35,8 @@ await crearIndices(base);
 const app = crearApp(base, conexion.cliente());
 const servidor = app.listen(0);
 await new Promise((listo) => servidor.once('listening', listo));
-const direccion = 'http://127.0.0.1:' + servidor.address().port + '/api';
+const raiz = 'http://127.0.0.1:' + servidor.address().port;
+const direccion = raiz + '/api';
 
 const ADMINISTRADOR = { correo: 'admin@todotv.test', contrasena: 'admin1234' };
 const administrador = Usuario.nuevo({
@@ -48,6 +50,7 @@ await base.collection('usuarios').insertOne(administrador.aDocumento());
 let contador = 0;
 const contexto = {
     base,
+    raiz,
     direccion,
     administrador: ADMINISTRADOR,
     cliente: () => new ClienteHttp(direccion, '1.x'),
@@ -79,6 +82,8 @@ const suites = [
     ['Transacciones', pruebasTransacciones],
     ['Favoritos', pruebasFavoritos],
     ['Versionado con semver', pruebasVersion],
+    ['Frontend estático', pruebasFrontend],
+    ['Componentes del frontend', pruebasComponentes],
     ['Límite de peticiones', pruebasLimites]
 ];
 

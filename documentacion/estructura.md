@@ -25,13 +25,18 @@ TodoTv/
 │   └── utilidades/              helpers de identificadores y valores
 ├── publico/                     interfaz gráfica, HTML/CSS/JS puro
 │   ├── index.html
-│   ├── css/
+│   ├── css/estilos.css
 │   └── js/
-│       ├── api/                 único módulo que llama a fetch
+│       ├── principal.js         enrutado por hash y menú según el rol
+│       ├── enrutador.js         navegar() y lectura del hash
+│       ├── estado.js            el usuario de la sesión
+│       ├── componentes.js       escapado, tarjetas y estados de carga/error/vacío
+│       ├── api/api.js           único módulo que llama a fetch
 │       └── vistas/              una vista por pantalla
 ├── scripts/
 │   ├── indices.js               crea los índices
 │   ├── semilla.js               datos de prueba, idempotente, --reset
+│   ├── simulacion-frontend.js   recorre el consumo real, incluida la caída de la base
 │   └── pruebas/                 pruebas contra MongoMemoryReplSet
 └── documentacion/
 ```

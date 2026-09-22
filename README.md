@@ -57,7 +57,7 @@ Usuarios que deja la semilla:
 | `npm run indices` | crea o confirma los índices |
 | `npm run semilla` | carga datos de ejemplo sin duplicar nada |
 | `npm run semilla:reset` | vacía las colecciones y vuelve a cargarlas |
-| `npm run pruebas` | 56 pruebas de integración contra un MongoMemoryReplSet |
+| `npm run pruebas` | 65 pruebas de integración contra un MongoMemoryReplSet |
 | `npm run simulacion` | recorre el consumo del frontend, incluida la caída de la base |
 
 Las pruebas y la simulación levantan su propio MongoDB en memoria: no tocan la base real
@@ -126,6 +126,22 @@ El cliente manda la versión que acepta en la cabecera `Accept-Version`, con cua
 rango que entienda semver (`1.x`, `^1.0.0`, `1.0.0`). Si la versión de la API no lo
 satisface, la respuesta es 409. Sin cabecera se asume la versión actual, que siempre
 viaja de vuelta en `X-API-Version`.
+
+## Interfaz
+
+HTML, CSS y JavaScript puros: sin React, sin jQuery, sin Bootstrap y sin proceso de build.
+Módulos ES nativos en el navegador y `fetch` con `credentials: 'include'`.
+
+Las vistas son login, registro, catálogo con filtro por categoría y búsqueda, detalle del
+programa con sus capítulos y su reparto, ficha de actor con los personajes que interpreta,
+favoritos y el panel de administración con el CRUD de los seis recursos.
+
+`publico/js/api/api.js` es el único módulo que llama a `fetch`; las vistas nunca lo tocan.
+Cada vista maneja sus tres estados: cargando, error con botón de reintentar y lista vacía.
+Si una respuesta vuelve 401, la sesión se limpia y la aplicación va al login.
+
+El menú de administración solo se le muestra al administrador, pero eso es cosmético:
+la autorización de verdad la hace el backend en cada endpoint.
 
 ## Arquitectura
 
