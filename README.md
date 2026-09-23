@@ -32,6 +32,13 @@ cd frontend
 npm run inicio      # http://localhost:4000
 ```
 
+Si el puerto 3000 ya está ocupado, las dos partes se mueven sin tocar código:
+
+```bash
+cd backend  && PUERTO=3010 npm run demo
+cd frontend && PUERTO=4010 API_DESTINO=http://127.0.0.1:3010 npm run inicio
+```
+
 | rol | correo | contraseña |
 |---|---|---|
 | administrador | admin@todotv.test | Admin1234 |

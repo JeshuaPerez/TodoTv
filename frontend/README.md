@@ -43,7 +43,7 @@ de iniciar sesión.
 estáticos y reenvía todo lo que empieza con `/api` a la API. Para el navegador hay un
 solo origen, así que la cookie viaja sola y tampoco hace falta configurar CORS.
 
-Son unas 120 líneas con los módulos `http` y `fs` de Node, sin dependencias.
+Son 115 líneas con los módulos `http` y `fs` de Node, sin dependencias.
 
 Si algún día la interfaz se publica en un dominio distinto al de la API, hay que definir
 `window.TODOTV = { api: 'https://…' }` en el `index.html` y, en el backend, pasar la
@@ -121,9 +121,9 @@ favoritos, mi cuenta y el panel de administración con el CRUD de los seis recur
 npm run pruebas
 ```
 
-Levanta la API de demostración y esta interfaz de verdad, y corre 33 pruebas contra las
+Levanta la API de demostración y esta interfaz de verdad, y corre 36 pruebas contra las
 dos: que cada módulo y hoja de estilo se sirva, que ningún import quede roto, que la
 cookie atraviese el proxy, que el `api.js` real haga bien todo el recorrido (catálogo,
-favoritos, CRUD completo, transacción de capítulos iniciales), que los errores lleguen
-con su detalle por campo y que, con la API caída, el proxy conteste 502 y la interfaz se
+favoritos, CRUD completo, transacción de capítulos iniciales), que los formularios salgan con sus atributos
+intactos, que los errores lleguen con su detalle por campo y que, con la API caída, el proxy conteste 502 y la interfaz se
 siga sirviendo.

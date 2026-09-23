@@ -490,6 +490,60 @@ await prueba('las fechas, duraciones y plurales salen en español', async () => 
     verdadero(fecha('1986-02-26').includes('1986'), 'la fecha no se formateó');
 });
 
+await prueba('los campos del formulario salen con sus atributos de verdad', async () => {
+    const { campos } = await import('../src/js/componentes/formulario.js');
+
+    const definiciones = [
+        { nombre: 'anioFundacion', etiqueta: 'Año', tipo: 'numero', requerido: true, minimo: 1888 },
+        { nombre: 'programaId', etiqueta: 'Programa', tipo: 'seleccion', requerido: true, soloAlCrear: true,
+          valores: [{ valor: 'a1', texto: 'Dragon Ball' }] }
+    ];
+
+    const alta = definiciones.map((definicion) => campos([definicion], null, { edicion: false })[0].texto).join('');
+    // si el mínimo se arma como texto suelto, las comillas se escapan y el atributo no existe
+    verdadero(alta.includes('min="1888"'), 'el atributo min salió escapado: ' + alta.slice(0, 200));
+    verdadero(alta.includes('required'), 'falta el required');
+
+    const edicion = campos([definiciones[1]], { programaId: 'a1' }, { edicion: true })[0].texto;
+    verdadero(edicion.includes('disabled'), 'el campo soloAlCrear debería quedar bloqueado al editar');
+    verdadero(!edicion.includes('required'), 'un campo bloqueado no puede ser requerido');
+    verdadero(edicion.includes('value="a1" selected'), 'no quedó seleccionada la opción actual');
+});
+
+await prueba('los valores hostiles no escapan del atributo', async () => {
+    const { campos } = await import('../src/js/componentes/formulario.js');
+    const { tarjetaPrograma } = await import('../src/js/componentes/tarjetas.js');
+
+    // escapado, el atributo queda como onfocus=&quot;: inofensivo.
+    // el peligro sería que sobreviviera una comilla de verdad
+    const campo = campos([{ nombre: 'titulo', etiqueta: 'Título', tipo: 'texto' }],
+        { titulo: '" onfocus="robar()' }, {})[0].texto;
+    verdadero(!campo.includes('onfocus="'), 'el valor se escapó del atributo: ' + campo);
+    verdadero(campo.includes('&quot;'), 'las comillas no se escaparon');
+
+    const tarjeta = tarjetaPrograma({ id: 'x', titulo: 'T', poster: '" onerror="robar()' }, {}).texto;
+    verdadero(!tarjeta.includes('onerror="'), 'el poster se escapó del atributo: ' + tarjeta);
+});
+
+await prueba('el formulario y sus enganches usan los mismos nombres', async () => {
+    const { campos } = await import('../src/js/componentes/formulario.js');
+    const codigo = await (await import('node:fs/promises')).readFile('src/js/componentes/formulario.js', 'utf8');
+
+    const salida = campos([{
+        nombre: 'capitulos',
+        etiqueta: 'Capítulos iniciales',
+        tipo: 'lista',
+        soloAlCrear: true,
+        subcampos: [{ nombre: 'numero', etiqueta: 'Nº', tipo: 'numero' }]
+    }], null, { edicion: false })[0].texto;
+
+    // conectarListas y leerValores buscan por estos selectores
+    for (const enganche of ['data-lista="capitulos"', 'lista-campos__filas', 'data-agregar-fila']) {
+        verdadero(salida.includes(enganche), 'falta el enganche ' + enganche);
+        verdadero(codigo.includes(enganche.split('=')[0]), 'nadie busca ' + enganche);
+    }
+});
+
 const fallidas = resultados.filter((resultado) => !resultado.ok);
 console.log('\n' + '-'.repeat(52));
 console.log(resultados.length - fallidas.length + ' pasadas, ' + fallidas.length + ' fallidas');

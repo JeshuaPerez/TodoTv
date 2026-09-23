@@ -26,8 +26,10 @@ function control(definicion, valor, edicion) {
     }
 
     const tipos = { fecha: 'date', numero: 'number', enlace: 'url', texto: 'text' };
-    return html`<input ${comunes} type="${tipos[definicion.tipo] ?? 'text'}" value="${valor}"
-        ${definicion.minimo === undefined ? '' : 'min="' + definicion.minimo + '"'}>`;
+    // el mínimo se arma con la plantilla: como texto suelto, las comillas se escaparían
+    const minimo = definicion.minimo === undefined ? '' : html`min="${definicion.minimo}"`;
+
+    return html`<input ${comunes} type="${tipos[definicion.tipo] ?? 'text'}" value="${valor}" ${minimo}>`;
 }
 
 function filaDeLista(definicion, valores = {}) {
