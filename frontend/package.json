@@ -1,0 +1,12 @@
+{
+    "name": "todotv-web",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Interfaz web de TodoTv: HTML, CSS y JavaScript puros, sin dependencias",
+    "type": "module",
+    "scripts": {
+        "inicio": "node servidor.js",
+        "pruebas": "node scripts/pruebas.js"
+    },
+    "license": "MIT"
+}

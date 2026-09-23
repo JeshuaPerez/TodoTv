@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TodoTv</title>
+    <meta name="description" content="Catálogo de programas de televisión: novelas, anime y cartoons.">
+    <meta name="color-scheme" content="dark">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%BA%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/vistas.css">
+</head>
+<body>
+    <div class="banda" id="banda" role="alert" hidden></div>
+
+    <header class="cabecera">
+        <a class="marca" href="#/catalogo">Todo<span>Tv</span></a>
+        <nav class="navegacion" id="navegacion" aria-label="Navegación principal"></nav>
+    </header>
+
+    <main class="contenido" id="contenido"></main>
+
+    <footer class="pie">
+        <span>TodoTv · catálogo de programas de televisión</span>
+        <span class="pie__version" id="pie-version"></span>
+    </footer>
+
+    <script type="module" src="js/principal.js"></script>
+</body>
+</html>

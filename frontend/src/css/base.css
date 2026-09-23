@@ -1,0 +1,205 @@
+:root {
+    --fondo: #0d1018;
+    --fondo-alto: #141925;
+    --superficie: #1a2031;
+    --borde: #28304a;
+    --texto: #e9ecf5;
+    --texto-suave: #98a2bd;
+    --acento: #ff8a4c;
+    --acento-tenue: rgba(255, 138, 76, 0.16);
+    --acento-texto: #2a1200;
+    --enlace: #7db8ff;
+    --peligro: #ff6b81;
+    --exito: #4ade80;
+
+    --radio: 14px;
+    --radio-chico: 8px;
+    --sombra: 0 18px 40px rgba(0, 0, 0, 0.45);
+    --ancho: 1160px;
+    --paso: 8px;
+    --tipografia: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --fondo: #f5f6fa;
+        --fondo-alto: #ffffff;
+        --superficie: #ffffff;
+        --borde: #dde1ec;
+        --texto: #1a1f2e;
+        --texto-suave: #5f667f;
+        --acento: #e0611f;
+        --acento-tenue: rgba(224, 97, 31, 0.12);
+        --acento-texto: #ffffff;
+        --enlace: #1c63c4;
+        --peligro: #c81e3a;
+        --exito: #127a3f;
+        --sombra: 0 18px 40px rgba(20, 25, 40, 0.12);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: var(--tipografia);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    margin: 0 0 calc(var(--paso) * 1.5);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.05rem; }
+
+p { margin: 0 0 var(--paso); }
+
+a {
+    color: var(--enlace);
+    text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+code {
+    padding: 1px 6px;
+    background: var(--fondo-alto);
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    font-size: 0.85em;
+}
+
+:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+}
+
+.solo-lectores {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.banda {
+    padding: 10px 20px;
+    background: var(--peligro);
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--paso);
+    padding: 12px 24px;
+    background: color-mix(in srgb, var(--fondo) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--borde);
+}
+
+.marca {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--texto);
+}
+
+.marca span { color: var(--acento); }
+.marca:hover { text-decoration: none; }
+
+.navegacion {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.navegacion a {
+    padding: 7px 13px;
+    border-radius: 999px;
+    color: var(--texto-suave);
+    font-size: 0.93rem;
+    font-weight: 500;
+}
+
+.navegacion a:hover {
+    background: var(--fondo-alto);
+    color: var(--texto);
+    text-decoration: none;
+}
+
+.navegacion a.es-activa {
+    background: var(--acento-tenue);
+    color: var(--acento);
+}
+
+.navegacion__usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: var(--paso);
+    padding-left: 12px !important;
+}
+
+.avatar {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    background: var(--acento);
+    border-radius: 50%;
+    color: var(--acento-texto);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.contenido {
+    flex: 1;
+    width: 100%;
+    max-width: var(--ancho);
+    margin: 0 auto;
+    padding: 28px 24px 56px;
+}
+
+.pie {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--paso);
+    padding: 18px 24px;
+    border-top: 1px solid var(--borde);
+    color: var(--texto-suave);
+    font-size: 0.83rem;
+}
+
+.pie__version { font-variant-numeric: tabular-nums; }
