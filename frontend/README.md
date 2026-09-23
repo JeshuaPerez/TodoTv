@@ -15,8 +15,8 @@ npm run demo      # levanta la API con MongoDB en memoria y datos de ejemplo
 ```
 
 `npm run demo` no necesita Atlas ni configuración: arranca un replica set en memoria,
-corre la semilla y queda escuchando en el puerto 3000. Para usar la base de verdad,
-`npm run inicio` con el `.env` completo.
+corre la semilla y queda escuchando en el puerto 3000, o en el que diga `PUERTO` si hay un
+`backend/.env`. Para usar la base de verdad, `npm run inicio` con el `.env` completo.
 
 En otra terminal, la interfaz:
 
@@ -26,8 +26,17 @@ npm run inicio    # http://localhost:4000
 
 | variable | por defecto | para qué |
 |---|---|---|
-| `PUERTO` | 4000 | puerto de la interfaz |
+| `PUERTO_WEB` | 4000 | puerto de la interfaz |
 | `API_DESTINO` | http://127.0.0.1:3000 | a dónde se reenvía `/api` |
+
+La variable se llama `PUERTO_WEB` y no `PUERTO` a propósito: el backend usa `PUERTO` y las
+dos partes corren al mismo tiempo, así que con el nombre compartido alcanzaba con definirlo
+una vez para que las dos quisieran el mismo puerto.
+
+Los dos puertos tienen que coincidir con lo que espera cada lado. Si la API escucha en otro
+puerto (`PUERTO` en `backend/.env`), hay que mover `API_DESTINO` al mismo número; si no, la
+interfaz se sirve igual pero cada llamada a `/api` vuelve como 502 `API_INALCANZABLE`. Al
+arrancar, `servidor.js` avisa si la API no contesta y si el puerto ya está ocupado.
 
 Usuarios que deja la semilla: `admin@todotv.test / Admin1234` (administrador) y
 `demo@todotv.test / Demo1234` (usuario).

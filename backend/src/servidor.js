@@ -2,6 +2,7 @@ import { entorno, verificarEntorno } from './config/entorno.js';
 import { Conexion } from './config/db.js';
 import { crearIndices } from './config/indices.js';
 import { crearApp } from './app.js';
+import { avisarSiElPuertoEstaOcupado } from './utilidades/puerto.js';
 
 async function arrancar() {
     verificarEntorno();
@@ -15,6 +16,8 @@ async function arrancar() {
         console.log('TodoTv (' + entorno.nombre + ') escuchando en http://localhost:' + entorno.puerto);
         console.log('Documentación en http://localhost:' + entorno.puerto + '/api/docs');
     });
+
+    avisarSiElPuertoEstaOcupado(servidor, entorno.puerto);
 
     const apagar = async (senal) => {
         console.log('\nApagando por ' + senal + '...');

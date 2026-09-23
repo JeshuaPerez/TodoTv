@@ -32,11 +32,24 @@ cd frontend
 npm run inicio      # http://localhost:4000
 ```
 
-Si el puerto 3000 ya está ocupado, las dos partes se mueven sin tocar código:
+La API queda en el **3000** y la interfaz en el **4000**: son dos procesos a la vez, así que
+nunca pueden compartir puerto. Si cambiás `PUERTO` en `backend/.env`, la interfaz deja de
+encontrar la API y todo contesta 502 `API_INALCANZABLE`; hay que mover también su
+`API_DESTINO`. Cada parte tiene su propia variable (`PUERTO` la API, `PUERTO_WEB` la
+interfaz) para que definir una no mueva la otra sin querer.
+
+Si el 3000 ya está ocupado, las dos partes se mueven sin tocar código:
 
 ```bash
+# PowerShell (Windows)
+cd backend ; $env:PUERTO=3010 ; npm run demo
+cd frontend ; $env:PUERTO_WEB=4010 ; $env:API_DESTINO='http://127.0.0.1:3010' ; npm run inicio
+```
+
+```bash
+# bash (Linux, macOS, Git Bash)
 cd backend  && PUERTO=3010 npm run demo
-cd frontend && PUERTO=4010 API_DESTINO=http://127.0.0.1:3010 npm run inicio
+cd frontend && PUERTO_WEB=4010 API_DESTINO=http://127.0.0.1:3010 npm run inicio
 ```
 
 | rol | correo | contraseña |

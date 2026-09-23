@@ -48,6 +48,10 @@ Usuarios que deja la semilla:
 | `LIMITE_GLOBAL` | 300 | peticiones por ventana e IP |
 | `LIMITE_AUTENTICACION` | 10 | intentos de registro e inicio de sesión |
 
+Si cambiás `PUERTO`, acordate de que la interfaz de [frontend/](../frontend) corre al mismo
+tiempo en el 4000 y reenvía `/api` al 3000: hay que mover su `API_DESTINO` al puerto nuevo,
+y el valor no puede ser el 4000 porque ese lo ocupa la interfaz.
+
 ## Scripts
 
 | comando | qué hace |

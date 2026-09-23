@@ -4,7 +4,9 @@ import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const RAIZ = fileURLToPath(new URL('./src/', import.meta.url));
-const PUERTO = Number(process.env.PUERTO ?? 4000);
+// PUERTO_WEB y no PUERTO: el backend usa PUERTO y las dos partes corren a la vez,
+// así que compartir el nombre las hacía pelear por el mismo puerto
+const PUERTO = Number(process.env.PUERTO_WEB ?? 4000);
 const API = process.env.API_DESTINO ?? 'http://127.0.0.1:3000';
 
 const TIPOS = {
@@ -107,9 +109,43 @@ export const servidor = createServer(async (peticion, respuesta) => {
     }
 });
 
+// el fallo más común al arrancar es de puertos, así que se explica en vez de tirar la traza
+servidor.on('error', (error) => {
+    if (error.code !== 'EADDRINUSE') throw error;
+    console.error('El puerto ' + PUERTO + ' ya está ocupado.');
+    console.error('Probablemente lo tenga la API: revisá PUERTO en backend/.env, o levantá');
+    console.error('la interfaz en otro puerto con PUERTO_WEB=4010.');
+    process.exit(1);
+});
+
+// si el proxy apunta al puerto de la interfaz, /api se reenvía a sí mismo y nada funciona
+function revisarDestino() {
+    const { port, hostname } = new URL(API);
+    const propio = ['localhost', '127.0.0.1', '::1', '0.0.0.0'].includes(hostname);
+    if (!propio || Number(port || 80) !== PUERTO) return;
+    console.error('API_DESTINO apunta al puerto de esta misma interfaz (' + PUERTO + ').');
+    console.error('La API tiene que escuchar en otro puerto: revisá PUERTO en backend/.env.');
+    process.exit(1);
+}
+
+// un aviso al arrancar ahorra descubrir por el 502 que la API no está donde se la busca
+async function avisarSiLaApiNoResponde() {
+    try {
+        const respuesta = await fetch(API + '/api/programas', { signal: AbortSignal.timeout(3000) });
+        // la cabecera de versión la pone la API en cada respuesta: alcanza para reconocerla
+        if (respuesta.ok || respuesta.headers.has('x-api-version')) return;
+        console.warn('Aviso: ' + API + ' contestó ' + respuesta.status + ' y no parece la API de TodoTv.');
+    } catch {
+        console.warn('Aviso: la API no responde en ' + API + '.');
+        console.warn('Levantala con "npm run demo" en backend/, o corregí API_DESTINO si usa otro puerto.');
+    }
+}
+
 if (process.env.NO_ARRANCAR !== '1') {
+    revisarDestino();
     servidor.listen(PUERTO, () => {
         console.log('TodoTv Web en http://localhost:' + PUERTO);
         console.log('Las peticiones a /api se reenvían a ' + API);
+        avisarSiLaApiNoResponde();
     });
 }

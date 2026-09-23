@@ -14,6 +14,7 @@ await import('./semilla.js');
 const { entorno } = await import('../src/config/entorno.js');
 const { Conexion } = await import('../src/config/db.js');
 const { crearApp } = await import('../src/app.js');
+const { avisarSiElPuertoEstaOcupado } = await import('../src/utilidades/puerto.js');
 
 const conexion = Conexion.instancia();
 const base = await conexion.conectar();
@@ -22,6 +23,8 @@ const servidor = crearApp(base, conexion.cliente()).listen(entorno.puerto, () =>
     console.log('Documentación en http://localhost:' + entorno.puerto + '/api/docs');
     console.log('Los datos viven en memoria: al cortar el proceso se borran.\n');
 });
+
+avisarSiElPuertoEstaOcupado(servidor, entorno.puerto);
 
 const apagar = async () => {
     servidor.close();
