@@ -54,6 +54,7 @@ Usuarios que deja la semilla:
 |---|---|
 | `npm run inicio` | levanta el servidor |
 | `npm run desarrollo` | igual, recargando con `--watch` |
+| `npm run demo` | levanta la API con MongoDB en memoria y datos de ejemplo, sin Atlas |
 | `npm run indices` | crea o confirma los índices |
 | `npm run semilla` | carga datos de ejemplo sin duplicar nada |
 | `npm run semilla:reset` | vacía las colecciones y vuelve a cargarlas |
@@ -128,6 +129,12 @@ satisface, la respuesta es 409. Sin cabecera se asume la versión actual, que si
 viaja de vuelta en `X-API-Version`.
 
 ## Interfaz
+
+Hay dos interfaces sobre esta misma API:
+
+- la que sirve este servidor en `publico/`, descrita acá abajo;
+- [TodoTvWeb](../TodoTvWeb), una aplicación aparte con su propio servidor y proxy, que
+  consume todos los endpoints.
 
 HTML, CSS y JavaScript puros: sin React, sin jQuery, sin Bootstrap y sin proceso de build.
 Módulos ES nativos en el navegador y `fetch` con `credentials: 'include'`.

@@ -10,6 +10,7 @@
     "scripts": {
         "inicio": "node src/servidor.js",
         "desarrollo": "node --watch src/servidor.js",
+        "demo": "node scripts/demo.js",
         "indices": "node scripts/indices.js",
         "semilla": "node scripts/semilla.js",
         "semilla:reset": "node scripts/semilla.js --reset",
