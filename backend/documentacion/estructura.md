@@ -1,7 +1,7 @@
 # Estructura de carpetas
 
 ```
-TodoTv/
+backend/
 ├── package.json
 ├── .env.example
 ├── src/
