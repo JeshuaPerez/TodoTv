@@ -30,7 +30,20 @@ const CATEGORIAS = [
 const PRODUCTORAS = [
     { nombre: 'Toei Animation', pais: 'Japón', anioFundacion: 1948 },
     { nombre: 'Cartoon Network Studios', pais: 'Estados Unidos', anioFundacion: 1994 },
-    { nombre: 'Televisa', pais: 'México', anioFundacion: 1973 }
+    { nombre: 'Televisa', pais: 'México', anioFundacion: 1973 },
+    { nombre: 'Studio Pierrot', pais: 'Japón', anioFundacion: 1979 },
+    { nombre: 'Madhouse', pais: 'Japón', anioFundacion: 1972 },
+    { nombre: 'Bones', pais: 'Japón', anioFundacion: 1998 },
+    { nombre: 'Wit Studio', pais: 'Japón', anioFundacion: 2012 },
+    { nombre: 'MAPPA', pais: 'Japón', anioFundacion: 2011 },
+    { nombre: 'Ufotable', pais: 'Japón', anioFundacion: 2000 },
+    { nombre: 'Sunrise', pais: 'Japón', anioFundacion: 1972 },
+    { nombre: 'Gainax', pais: 'Japón', anioFundacion: 1984 },
+    { nombre: 'A-1 Pictures', pais: 'Japón', anioFundacion: 2005 },
+    { nombre: 'White Fox', pais: 'Japón', anioFundacion: 2007 },
+    { nombre: 'CloverWorks', pais: 'Japón', anioFundacion: 2018 },
+    { nombre: 'OLM', pais: 'Japón', anioFundacion: 1963 },
+    { nombre: 'Kyoto Animation', pais: 'Japón', anioFundacion: 1981 }
 ];
 
 const ACTORES = [
@@ -85,6 +98,198 @@ const PROGRAMAS = [
         personajes: [
             { nombre: 'María Hernández', actor: 'Thalía' }
         ]
+    },
+    {
+        titulo: 'Dragon Ball Z',
+        categoria: 'anime',
+        productora: 'Toei Animation',
+        sinopsis: 'Goku descubre su origen saiyajin y defiende la Tierra de enemigos cada vez más poderosos junto a sus aliados.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Naruto',
+        categoria: 'anime',
+        productora: 'Studio Pierrot',
+        sinopsis: 'Un ninja adolescente busca el reconocimiento de su aldea y sueña con convertirse algún día en Hokage.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'One Piece',
+        categoria: 'anime',
+        productora: 'Toei Animation',
+        sinopsis: 'Monkey D. Luffy zarpa con su tripulación pirata en busca del legendario tesoro One Piece.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Death Note',
+        categoria: 'anime',
+        productora: 'Madhouse',
+        sinopsis: 'Un estudiante encuentra un cuaderno que mata a quien escriba su nombre y decide usarlo para purgar el crimen.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Fullmetal Alchemist: Brotherhood',
+        categoria: 'anime',
+        productora: 'Bones',
+        sinopsis: 'Dos hermanos alquimistas buscan la piedra filosofal para recuperar lo que perdieron en un ritual prohibido.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Attack on Titan',
+        categoria: 'anime',
+        productora: 'Wit Studio',
+        sinopsis: 'La humanidad sobrevive tras murallas mientras titanes gigantes amenazan con devorar a quien quede fuera.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'My Hero Academia',
+        categoria: 'anime',
+        productora: 'Bones',
+        sinopsis: 'En un mundo donde casi todos tienen superpoderes, un chico sin ellos sueña con convertirse en el héroe número uno.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Demon Slayer',
+        categoria: 'anime',
+        productora: 'Ufotable',
+        sinopsis: 'Un joven se convierte en cazador de demonios para vengar a su familia y curar a su hermana convertida en demonio.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Jujutsu Kaisen',
+        categoria: 'anime',
+        productora: 'MAPPA',
+        sinopsis: 'Un estudiante se une a una organización secreta de hechiceros para combatir maldiciones y buscar los dedos de un rey demonio.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Cowboy Bebop',
+        categoria: 'anime',
+        productora: 'Sunrise',
+        sinopsis: 'Un grupo de cazarrecompensas viaja por el espacio resolviendo casos mientras huye de su propio pasado.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Neon Genesis Evangelion',
+        categoria: 'anime',
+        productora: 'Gainax',
+        sinopsis: 'Adolescentes pilotan gigantescos robots biomecánicos para defender a la humanidad de misteriosos ángeles.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Sailor Moon',
+        categoria: 'anime',
+        productora: 'Toei Animation',
+        sinopsis: 'Una estudiante se transforma en guerrera mágica para proteger la Tierra junto a sus compañeras Sailor Scouts.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'One Punch Man',
+        categoria: 'anime',
+        productora: 'Madhouse',
+        sinopsis: 'Un héroe capaz de derrotar a cualquier rival de un solo golpe busca un desafío que lo haga sentir vivo otra vez.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Tokyo Ghoul',
+        categoria: 'anime',
+        productora: 'Studio Pierrot',
+        sinopsis: 'Tras un encuentro casi mortal, un joven queda a medio camino entre humano y ghoul devorador de carne humana.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Bleach',
+        categoria: 'anime',
+        productora: 'Studio Pierrot',
+        sinopsis: 'Un adolescente obtiene poderes de shinigami y asume la tarea de guiar almas y combatir espíritus corruptos.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Hunter x Hunter',
+        categoria: 'anime',
+        productora: 'Madhouse',
+        sinopsis: 'Un niño se convierte en cazador profesional con la esperanza de encontrar a su padre desaparecido.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Fairy Tail',
+        categoria: 'anime',
+        productora: 'A-1 Pictures',
+        sinopsis: 'Una maga se une al gremio Fairy Tail y vive aventuras junto a un grupo de magos excéntricos y leales.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Code Geass',
+        categoria: 'anime',
+        productora: 'Sunrise',
+        sinopsis: 'Un príncipe exiliado obtiene el poder de dar órdenes absolutas y lo usa para liderar una rebelión contra el imperio.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Steins;Gate',
+        categoria: 'anime',
+        productora: 'White Fox',
+        sinopsis: 'Un grupo de amigos descubre cómo enviar mensajes al pasado y desata consecuencias que amenazan con destruir el mundo.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Re:Zero',
+        categoria: 'anime',
+        productora: 'White Fox',
+        sinopsis: 'Un joven transportado a otro mundo descubre que puede regresar en el tiempo cada vez que muere.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Chainsaw Man',
+        categoria: 'anime',
+        productora: 'MAPPA',
+        sinopsis: 'Un joven fusionado con un demonio motosierra se convierte en cazador de demonios para pagar sus deudas.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Spy x Family',
+        categoria: 'anime',
+        productora: 'Wit Studio',
+        sinopsis: 'Un espía, una asesina y una niña telépata forman una familia falsa que esconde secretos entre sí.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Pokémon',
+        categoria: 'anime',
+        productora: 'OLM',
+        sinopsis: 'Un joven entrenador viaja por distintas regiones capturando y entrenando criaturas Pokémon junto a sus amigos.',
+        capitulos: [],
+        personajes: []
+    },
+    {
+        titulo: 'Violet Evergarden',
+        categoria: 'anime',
+        productora: 'Kyoto Animation',
+        sinopsis: 'Una ex soldado se convierte en escritora de cartas para comprender el significado de las palabras "te amo".',
+        capitulos: [],
+        personajes: []
     }
 ];
 
