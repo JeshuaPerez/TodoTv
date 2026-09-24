@@ -19,6 +19,11 @@ export class ServicioCapitulos {
         return programa;
     }
 
+    async listar() {
+        const capitulos = await this.capitulos.listar({}, { sort: { temporada: 1, numero: 1 } });
+        return capitulos.map((capitulo) => capitulo.aPublico());
+    }
+
     async porPrograma(programaId) {
         await this.verificarPrograma(programaId);
         const capitulos = await this.capitulos.porPrograma(programaId);

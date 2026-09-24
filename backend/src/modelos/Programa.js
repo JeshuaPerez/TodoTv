@@ -64,11 +64,6 @@ export class Programa {
         return this;
     }
 
-    esDeCategoria(categoriaId) {
-        const otra = aObjectId(categoriaId, 'id de la categoría');
-        return Boolean(this.categoriaId && otra && this.categoriaId.equals(otra));
-    }
-
     aDocumento() {
         return {
             titulo: this.titulo,

@@ -11,10 +11,6 @@ export class RepositorioUsuarios extends RepositorioBase {
         return this.uno({ correo: String(correo).toLowerCase() }, { collation: COTEJO_ES }, sesion);
     }
 
-    async porNombreUsuario(nombreUsuario, sesion = null) {
-        return this.uno({ nombreUsuario }, { collation: COTEJO_ES }, sesion);
-    }
-
     async guardarFavoritos(usuario, sesion = null) {
         await this.modificar(
             usuario.id,

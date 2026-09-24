@@ -19,8 +19,4 @@ export class RepositorioCapitulos extends RepositorioBase {
     async borrarDelPrograma(programaId, sesion = null) {
         return this.borrarPorFiltro({ programaId: aObjectId(programaId, 'id del programa') }, sesion);
     }
-
-    async contarDelPrograma(programaId, sesion = null) {
-        return this.contar({ programaId: aObjectId(programaId, 'id del programa') }, {}, sesion);
-    }
 }

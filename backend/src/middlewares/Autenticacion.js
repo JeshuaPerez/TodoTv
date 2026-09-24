@@ -45,15 +45,4 @@ export class Autenticacion {
             })(peticion, respuesta, siguiente);
         };
     }
-
-    // deja pasar al visitante anónimo, pero reconoce al que trae sesión
-    opcional() {
-        return (peticion, respuesta, siguiente) => {
-            this.passport.authenticate('jwt', { session: false }, (error, usuario) => {
-                if (error) return siguiente(error);
-                if (usuario) peticion.usuario = usuario;
-                siguiente();
-            })(peticion, respuesta, siguiente);
-        };
-    }
 }

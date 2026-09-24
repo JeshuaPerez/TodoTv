@@ -51,16 +51,6 @@ export class Personaje {
         return this;
     }
 
-    perteneceA(programaId) {
-        const otro = aObjectId(programaId, 'id del programa');
-        return Boolean(this.programaId && otro && this.programaId.equals(otro));
-    }
-
-    esInterpretadoPor(actorId) {
-        const otro = aObjectId(actorId, 'id del actor');
-        return Boolean(this.actorId && otro && this.actorId.equals(otro));
-    }
-
     aDocumento() {
         return {
             nombre: this.nombre,

@@ -23,6 +23,11 @@ export class ServicioPersonajes {
         }
     }
 
+    async listar() {
+        const personajes = await this.personajes.listar({}, { sort: { nombre: 1 } });
+        return personajes.map((personaje) => personaje.aPublico());
+    }
+
     // el reparto de un programa, cada personaje con el actor que lo interpreta
     async porPrograma(programaId) {
         await this.verificarReferencias({ programaId });

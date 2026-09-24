@@ -2,8 +2,8 @@ import semver from 'semver';
 import { entorno } from '../config/entorno.js';
 import { VersionNoCompatibleError } from '../errores/index.js';
 
-export const CABECERA_PEDIDA = 'Accept-Version';
-export const CABECERA_ACTUAL = 'X-API-Version';
+const CABECERA_PEDIDA = 'Accept-Version';
+const CABECERA_ACTUAL = 'X-API-Version';
 
 export function verificarVersion(version = entorno.version) {
     return (peticion, respuesta, siguiente) => {

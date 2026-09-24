@@ -68,11 +68,6 @@ export class Capitulo {
         return this;
     }
 
-    perteneceA(programaId) {
-        const otro = aObjectId(programaId, 'id del programa');
-        return Boolean(this.programaId && otro && this.programaId.equals(otro));
-    }
-
     etiqueta() {
         return 'T' + this.temporada + 'E' + String(this.numero).padStart(2, '0');
     }
