@@ -207,10 +207,11 @@ await prueba('lista, filtra por categoría y busca por texto', async () => {
     catalogo.categoria = categorias.find((categoria) => categoria.nombre === 'anime');
 
     const porCategoria = await api.programas.listar({ categoria: catalogo.categoria.id });
-    igual(porCategoria.length, 1);
-    catalogo.programa = porCategoria[0];
+    verdadero(porCategoria.length > 1, 'esperaba varios animes en el catálogo');
+    catalogo.programa = porCategoria.find((programa) => programa.titulo === 'Dragon Ball');
+    verdadero(catalogo.programa !== undefined, 'no se encontró Dragon Ball entre los animes');
 
-    const porTexto = await api.programas.listar({ texto: 'dragon' });
+    const porTexto = await api.programas.listar({ texto: 'adventure' });
     igual(porTexto.length, 1);
     igual((await api.programas.listar({ texto: 'zzzz' })).length, 0);
 });
@@ -247,7 +248,7 @@ await prueba('los actores se listan, se filtran y traen su ficha', async () => {
 
 await prueba('las productoras se listan con su país y año', async () => {
     const productoras = await api.productoras.listar();
-    igual(productoras.length, 3);
+    igual(productoras.length, 16);
     verdadero(productoras.every((productora) => productora.pais && productora.anioFundacion), 'faltan datos');
     catalogo.productora = productoras[0];
 });

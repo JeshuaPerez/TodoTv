@@ -7,7 +7,7 @@ const RAIZ = fileURLToPath(new URL('./src/', import.meta.url));
 // PUERTO_WEB y no PUERTO: el backend usa PUERTO y las dos partes corren a la vez,
 // así que compartir el nombre las hacía pelear por el mismo puerto
 const PUERTO = Number(process.env.PUERTO_WEB ?? 4000);
-const API = process.env.API_DESTINO ?? 'http://127.0.0.1:3000';
+const API = process.env.API_DESTINO ?? 'http://127.0.0.1:3500';
 
 const TIPOS = {
     '.html': 'text/html; charset=utf-8',

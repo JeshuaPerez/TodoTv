@@ -22,8 +22,8 @@ npm run semilla          # datos de ejemplo (idempotente)
 npm run inicio
 ```
 
-La aplicación queda en `http://localhost:3000` y la documentación interactiva en
-`http://localhost:3000/api/docs`.
+La aplicación queda en `http://localhost:3500` y la documentación interactiva en
+`http://localhost:3500/api/docs`.
 
 Usuarios que deja la semilla:
 
@@ -36,7 +36,7 @@ Usuarios que deja la semilla:
 
 | variable | por defecto | para qué |
 |---|---|---|
-| `PUERTO` | 3000 | puerto del servidor |
+| `PUERTO` | 3500 | puerto del servidor |
 | `ENTORNO` | desarrollo | `produccion` activa la cookie `secure` |
 | `MONGO_URI` | — | obligatoria, cadena de conexión de Atlas |
 | `MONGO_BASE` | todotv | nombre de la base |
@@ -49,7 +49,7 @@ Usuarios que deja la semilla:
 | `LIMITE_AUTENTICACION` | 10 | intentos de registro e inicio de sesión |
 
 Si cambiás `PUERTO`, acordate de que la interfaz de [frontend/](../frontend) corre al mismo
-tiempo en el 4000 y reenvía `/api` al 3000: hay que mover su `API_DESTINO` al puerto nuevo,
+tiempo en el 4000 y reenvía `/api` al 3500: hay que mover su `API_DESTINO` al puerto nuevo,
 y el valor no puede ser el 4000 porque ese lo ocupa la interfaz.
 
 ## Scripts

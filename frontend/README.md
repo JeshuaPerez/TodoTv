@@ -15,7 +15,7 @@ npm run demo      # levanta la API con MongoDB en memoria y datos de ejemplo
 ```
 
 `npm run demo` no necesita Atlas ni configuración: arranca un replica set en memoria,
-corre la semilla y queda escuchando en el puerto 3000, o en el que diga `PUERTO` si hay un
+corre la semilla y queda escuchando en el puerto 3500, o en el que diga `PUERTO` si hay un
 `backend/.env`. Para usar la base de verdad, `npm run inicio` con el `.env` completo.
 
 En otra terminal, la interfaz:
@@ -27,7 +27,7 @@ npm run inicio    # http://localhost:4000
 | variable | por defecto | para qué |
 |---|---|---|
 | `PUERTO_WEB` | 4000 | puerto de la interfaz |
-| `API_DESTINO` | http://127.0.0.1:3000 | a dónde se reenvía `/api` |
+| `API_DESTINO` | http://127.0.0.1:3500 | a dónde se reenvía `/api` |
 
 La variable se llama `PUERTO_WEB` y no `PUERTO` a propósito: el backend usa `PUERTO` y las
 dos partes corren al mismo tiempo, así que con el nombre compartido alcanzaba con definirlo

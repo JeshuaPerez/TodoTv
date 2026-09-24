@@ -32,13 +32,13 @@ cd frontend
 npm run inicio      # http://localhost:4000
 ```
 
-La API queda en el **3000** y la interfaz en el **4000**: son dos procesos a la vez, así que
+La API queda en el **3500** y la interfaz en el **4000**: son dos procesos a la vez, así que
 nunca pueden compartir puerto. Si cambiás `PUERTO` en `backend/.env`, la interfaz deja de
 encontrar la API y todo contesta 502 `API_INALCANZABLE`; hay que mover también su
 `API_DESTINO`. Cada parte tiene su propia variable (`PUERTO` la API, `PUERTO_WEB` la
 interfaz) para que definir una no mueva la otra sin querer.
 
-Si el 3000 ya está ocupado, las dos partes se mueven sin tocar código:
+Si el 3500 ya está ocupado, las dos partes se mueven sin tocar código:
 
 ```bash
 # PowerShell (Windows)
@@ -57,7 +57,7 @@ cd frontend && PUERTO_WEB=4010 API_DESTINO=http://127.0.0.1:3010 npm run inicio
 | administrador | admin@todotv.test | Admin1234 |
 | usuario | demo@todotv.test | Demo1234 |
 
-La documentación interactiva de la API queda en `http://localhost:3000/api/docs`.
+La documentación interactiva de la API queda en `http://localhost:3500/api/docs`.
 
 ## Pruebas
 

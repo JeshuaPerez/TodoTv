@@ -17,7 +17,7 @@ const nombreEntorno = leer('ENTORNO', 'desarrollo');
 export const entorno = {
     nombre: nombreEntorno,
     esProduccion: nombreEntorno === 'produccion',
-    puerto: numero('PUERTO', 3000),
+    puerto: numero('PUERTO', 3500),
     mongo: {
         uri: leer('MONGO_URI'),
         base: leer('MONGO_BASE', 'todotv')
